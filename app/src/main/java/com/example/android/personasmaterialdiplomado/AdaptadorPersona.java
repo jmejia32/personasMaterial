@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 /**
@@ -21,12 +19,12 @@ import java.util.ArrayList;
 public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.PersonaViewHolder> {
     private ArrayList<Persona> personas;
     private Resources res;
-    private OnPersonaClickListener clickListener;
+    private OnPersonaClickListener clickListnr;
 
-    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas, OnPersonaClickListener clickListener){
+    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas, OnPersonaClickListener clickListnr){
         this.personas=personas;
+        this.clickListnr = clickListnr;
         res = contexto.getResources();
-        this.clickListener=clickListener;
     }
 
     @Override
@@ -39,14 +37,13 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
     public void onBindViewHolder(PersonaViewHolder holder, int position) {
         final Persona p = personas.get(position);
         holder.foto.setImageDrawable(ResourcesCompat.getDrawable(res,p.getFoto(),null));
-        holder.cedula.setText(p.getCedula());
         holder.nombre.setText(p.getNombre());
         holder.apellido.setText(p.getApellido());
-
-        holder.v.setOnClickListener(new View.OnClickListener() {
+        holder.cedula.setText(p.getCedula());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                clickListener.onPersonaClick(p);
+            public void onClick(View v) {
+                clickListnr.onPersonaClick(p);
             }
         });
     }
@@ -58,22 +55,21 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
 
     public static class PersonaViewHolder extends RecyclerView.ViewHolder{
         private ImageView foto;
-        private TextView cedula;
         private TextView nombre;
         private TextView apellido;
-        private View v;
+        private TextView cedula;
 
         public PersonaViewHolder(View itemView){
             super(itemView);
-            v = itemView;
-            foto = (ImageView)itemView.findViewById(R.id.imgFoto);
-            cedula= (TextView)itemView.findViewById(R.id.lblCedula);
-            nombre= (TextView)itemView.findViewById(R.id.lblNombre);
-            apellido=(TextView)itemView.findViewById(R.id.lblApellido);
+
+            foto = itemView.findViewById(R.id.imgFoto);
+            nombre= itemView.findViewById(R.id.lblNombre);
+            apellido=itemView.findViewById(R.id.lblApellido);
+            cedula = itemView.findViewById(R.id.lblCedula);
         }
     }
 
-    public interface OnPersonaClickListener{
+    public interface OnPersonaClickListener {
         void onPersonaClick(Persona p);
     }
 }

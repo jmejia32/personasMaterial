@@ -52,6 +52,13 @@
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lblCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="TextView" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

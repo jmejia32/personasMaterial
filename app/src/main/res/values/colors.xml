@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorPrimaryLight">#C5CAE9</color>
-    <color name="colorAccent">#448aff</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorPrimaryLight">#B2DFDB</color>
+    <color name="colorAccent">#7C4DFF</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="icons">#FFFFFF</color>
@@ -12,4 +12,5 @@
     <color name="shadown_color">#66000000</color>
     <color name="ripple_color">#99FFFFFF</color>
 
+    <color name="btnSombra">#66000000</color>
 </resources>

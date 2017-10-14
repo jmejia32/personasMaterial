@@ -17,13 +17,13 @@ public class DetallePersona extends AppCompatActivity {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Persona p;
     private String cedula,nombre,apellido;
-    private int fot,sexo;
+    private int fot,sexo,pos;
     private Bundle bundle;
     private Intent i;
     private ImageView foto;
     private Resources res;
     private TextView ced,nomb,app,sex;
-    private String [] opc;
+    private String[] opc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class DetallePersona extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_persona);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
-       setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         ced =(TextView)findViewById(R.id.lblCedulaD);
         nomb = (TextView)findViewById(R.id.lblNombreD);
@@ -42,16 +42,16 @@ public class DetallePersona extends AppCompatActivity {
         foto = (ImageView) findViewById(R.id.fotoPersona);
         res = this.getResources();
         i = getIntent();
-        bundle = i.getBundleExtra("datos");
+        bundle = i.getExtras();
 
         cedula = bundle.getString("cedula");
         nombre = bundle.getString("nombre");
         apellido = bundle.getString("apellido");
         fot = bundle.getInt("foto");
         sexo = bundle.getInt("sexo");
+        pos = bundle.getInt("pos");
 
         opc = res.getStringArray(R.array.sexo);
-
 
         collapsingToolbarLayout.setTitle(nombre+" "+apellido);
         foto.setImageDrawable(ResourcesCompat.getDrawable(res,fot,null));
@@ -59,20 +59,16 @@ public class DetallePersona extends AppCompatActivity {
         nomb.setText(nombre);
         app.setText(apellido);
         sex.setText(opc[sexo]);
-
-
     }
 
     public void eliminar(View v){
         String positivo,negativo;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(res.getString(R.string.titulo_eliminar_mensaje));
-        builder.setMessage(res.getString(R.string.eliminar_mensaje));
-        positivo = res.getString(R.string.si_eliminar_mensaje);
-        negativo = res.getString(R.string.no_eliminar_mensaje);
-
-
+        builder.setTitle(res.getString(R.string.elimTitulo));
+        builder.setMessage(res.getString(R.string.elimMsj));
+        positivo = res.getString(R.string.Si);
+        negativo = res.getString(R.string.No);
 
         builder.setPositiveButton(positivo, new DialogInterface.OnClickListener() {
             @Override
@@ -80,22 +76,20 @@ public class DetallePersona extends AppCompatActivity {
                 Persona p = new Persona(cedula);
                 Datos.eliminarPersona(p);
                 onBackPressed();
-
             }
         });
-        builder.setNegativeButton(negativo, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
+        builder.setNegativeButton(negativo, null);
         AlertDialog dialog = builder.create();
         dialog.show();
-
-
-
     }
-    public void onBackPressed(){
+
+    public void editar(View v) {
+        Intent i = new Intent(DetallePersona.this, CrearPersonas.class);
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
+    public void onBackPressed() {
         finish();
         Intent i = new Intent(DetallePersona.this,Principal.class);
         startActivity(i);

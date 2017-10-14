@@ -11,10 +11,10 @@
     tools:layout_editor_absoluteY="8dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTitPersona"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/crear"
+        android:text="Titulo"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -54,7 +54,8 @@
             android:id="@+id/txtApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/apellido" />
+            android:hint="@string/apellido"
+            android:imeOptions="actionDone" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -70,12 +71,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAccion"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="guadar"
+            android:onClick="guardar"
             android:text="@string/guardar" />
 
         <Button

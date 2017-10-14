@@ -1,5 +1,7 @@
 package com.example.android.personasmaterialdiplomado;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,17 +17,24 @@ public class Metodos {
         return fotos.get(fotoSeleccionada);
     }
 
-    public static boolean exitencia_persona(ArrayList<Persona> personas, String cedula){
-        for (int i = 0; i <personas.size() ; i++) {
-            if(personas.get(i).getCedula().equals(cedula)){
-                return true;
-            }
+    public static boolean existeCedula(ArrayList<Persona> personas, Persona pers, int pos){
+        int idx = -1;
+        for (Persona p : personas) {
+            idx++;
+            if (idx == pos) continue;
+            if (p.getCedula().equals(pers.getCedula())) return true;
         }
         return false;
     }
 
-
-
-
-
+    public static boolean validarEditText(EditText et, String msj) {
+        if (et.getText().toString().isEmpty()) {
+            et.setError(msj);
+            et.requestFocus();
+            return false;
+        } else {
+            et.setError(null);
+        }
+        return true;
+    }
 }

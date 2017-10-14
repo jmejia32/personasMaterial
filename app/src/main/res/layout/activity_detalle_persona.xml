@@ -36,7 +36,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="pin"
-                app:srcCompat="@drawable/images" />
+                app:srcCompat="@drawable/images2" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar2"
@@ -64,7 +64,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/informacion"
+                android:text="@string/info"
                 android:textAlignment="center"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -181,22 +181,20 @@
         fab:menu_colorPressed="@color/colorAccent"
         fab:menu_colorRipple="@color/ripple_color"
         fab:menu_animationDelayPerItem="50"
-        fab:menu_icon="@drawable/fab_add"
+        fab:menu_icon="@android:drawable/ic_menu_delete"
         fab:menu_buttonSpacing="0dp"
         fab:menu_labels_margin="0dp"
         fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-
-       >
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_modificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="editar"
             android:src="@android:drawable/ic_menu_edit"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            fab:fab_label="@string/modificar"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
@@ -207,7 +205,6 @@
             android:src="@android:drawable/ic_menu_delete"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            fab:fab_label="@string/eliminar"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
